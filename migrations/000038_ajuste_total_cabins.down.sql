@@ -1,0 +1,2 @@
+ALTER TABLE ships
+DROP COLUMN IF EXISTS total_cabins;

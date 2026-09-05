@@ -1,0 +1,1 @@
+DROP TABLE gps_positions;

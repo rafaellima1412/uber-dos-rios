@@ -1,0 +1,6 @@
+server:
+  port: ":8000"
+  host: "localhost:8000"
+
+database:
+  url: "postgres://postgres:postgres@database:5432/identity_db?sslmode=disable"

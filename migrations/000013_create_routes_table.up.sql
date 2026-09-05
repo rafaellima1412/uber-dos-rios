@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS routes (
+    id UUID PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    active boolean NOT NULL,
+    organization_id UUID REFERENCES organizations(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

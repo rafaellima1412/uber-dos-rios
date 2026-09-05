@@ -1,0 +1,2335 @@
+basePath: /api/v1
+definitions:
+  dto.Cabin:
+    properties:
+      bed_type:
+        type: string
+      capacity:
+        type: integer
+      description:
+        type: string
+      name:
+        type: string
+    type: object
+  dto.CabinDetailResponse:
+    properties:
+      bed_type:
+        type: string
+      capacity:
+        type: integer
+      description:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  dto.Cabins:
+    properties:
+      available_cabins:
+        type: integer
+      occupied_units:
+        items:
+          type: string
+        type: array
+      total_cabins:
+        type: integer
+    type: object
+  dto.CityListItemResponse:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  dto.CreateCabinRequest:
+    properties:
+      cabins:
+        items:
+          $ref: '#/definitions/dto.Cabin'
+        type: array
+    type: object
+  dto.CreateReservationRequest:
+    properties:
+      reservation_date:
+        type: string
+      user_id:
+        type: string
+    type: object
+  dto.CreateRouteRequest:
+    properties:
+      name:
+        type: string
+      organization_id:
+        type: string
+    required:
+    - name
+    - organization_id
+    type: object
+  dto.CreateScheduleRequest:
+    properties:
+      route_id:
+        type: string
+      stop_order:
+        type: integer
+      terminal_id:
+        type: string
+      value:
+        type: number
+    required:
+    - route_id
+    - stop_order
+    - terminal_id
+    - value
+    type: object
+  dto.CreateSeatRequest:
+    properties:
+      is_active:
+        type: boolean
+      left_columns_count:
+        type: integer
+      nivel:
+        type: integer
+      prefix:
+        type: boolean
+      right_columns_count:
+        type: integer
+    type: object
+  dto.CreateShipRequest:
+    properties:
+      configuration_id:
+        type: string
+      imo:
+        type: string
+      name:
+        type: string
+      organization_id:
+        type: string
+      passenger_capacity:
+        type: integer
+      status:
+        type: string
+      total_seats:
+        type: integer
+      type_ship:
+        type: string
+      weight_capacity:
+        type: number
+    required:
+    - imo
+    - name
+    - passenger_capacity
+    - status
+    - total_seats
+    - type_ship
+    - weight_capacity
+    type: object
+  dto.CreateTerminalRequest:
+    properties:
+      city_id:
+        type: integer
+      latitude:
+        type: number
+      longitude:
+        type: number
+      name:
+        type: string
+      uf:
+        type: string
+    required:
+    - city_id
+    - name
+    - uf
+    type: object
+  dto.CreateTripConfigRequest:
+    properties:
+      arrival_time:
+        type: string
+      departure_time:
+        type: string
+      duration_days:
+        type: integer
+      expiration_date:
+        type: string
+      recurrence:
+        type: string
+      route_id:
+        type: string
+      ship_id:
+        type: string
+      start_date:
+        type: string
+    required:
+    - route_id
+    - ship_id
+    type: object
+  dto.ErrorResponse:
+    properties:
+      error:
+        example: detailed error message
+        type: string
+    type: object
+  dto.GPSRequest:
+    properties:
+      course:
+        type: number
+      latitude:
+        type: number
+      longitude:
+        type: number
+      ship_name:
+        type: string
+      speed:
+        type: number
+    required:
+    - latitude
+    - longitude
+    - ship_name
+    type: object
+  dto.GetRouteDetailResponse:
+    properties:
+      active:
+        type: boolean
+      id:
+        type: string
+      name:
+        type: string
+      organization:
+        $ref: '#/definitions/dto.OrganizationDetailResponse'
+    type: object
+  dto.GetScheduleResponse:
+    properties:
+      active:
+        type: boolean
+      id:
+        type: string
+      route:
+        $ref: '#/definitions/dto.GetRouteDetailResponse'
+      terminal:
+        $ref: '#/definitions/dto.TerminalDetailResponse'
+      value:
+        type: number
+    type: object
+  dto.Itinerary:
+    properties:
+      city:
+        type: string
+      stop_order:
+        type: integer
+      uf:
+        type: string
+    type: object
+  dto.ListItemRouteResponse:
+    properties:
+      active:
+        type: boolean
+      id:
+        type: string
+      name:
+        type: string
+      organization:
+        $ref: '#/definitions/dto.OrganizationDetailResponse'
+    type: object
+  dto.ListItemScheduleResponse:
+    properties:
+      active:
+        type: boolean
+      id:
+        type: string
+      route_id:
+        type: string
+      route_name:
+        type: string
+      terminal_id:
+        type: string
+      terminal_name:
+        type: string
+      value:
+        type: number
+    type: object
+  dto.ListReservationResponse:
+    properties:
+      current_page:
+        type: integer
+      reservations:
+        items:
+          $ref: '#/definitions/dto.ReservationListItemResponse'
+        type: array
+      total_count:
+        type: integer
+      total_pages:
+        type: integer
+    type: object
+  dto.ListRouteResponse:
+    properties:
+      current_page:
+        type: integer
+      routes:
+        items:
+          $ref: '#/definitions/dto.ListItemRouteResponse'
+        type: array
+      total_count:
+        type: integer
+      total_pages:
+        type: integer
+    type: object
+  dto.ListScheduleResponse:
+    properties:
+      current_page:
+        type: integer
+      schedules:
+        items:
+          $ref: '#/definitions/dto.ListItemScheduleResponse'
+        type: array
+      total_count:
+        type: integer
+      total_pages:
+        type: integer
+    type: object
+  dto.ListShipResponse:
+    properties:
+      current_page:
+        type: integer
+      ships:
+        items:
+          $ref: '#/definitions/dto.ShipListItemResponse'
+        type: array
+      total_count:
+        type: integer
+      total_pages:
+        type: integer
+    type: object
+  dto.ListUnitAvailableResponse:
+    properties:
+      cabins:
+        $ref: '#/definitions/dto.Cabins'
+      seats:
+        $ref: '#/definitions/dto.Seats'
+      ship_id:
+        type: string
+      ship_name:
+        type: string
+    type: object
+  dto.OrganizationDetailResponse:
+    properties:
+      cnpj:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      phone_number:
+        type: string
+      type:
+        type: string
+    type: object
+  dto.PathStep:
+    properties:
+      arrival_date:
+        type: string
+      city_id:
+        type: integer
+      cost:
+        type: integer
+      departure_date:
+        type: string
+      organization_id:
+        type: string
+      route_id:
+        type: string
+      route_name:
+        type: string
+      ship_id:
+        type: string
+      trip_configuration_id:
+        type: string
+    type: object
+  dto.PhotosRequest:
+    properties:
+      image_url:
+        items:
+          type: string
+        type: array
+      ship_id:
+        type: string
+    required:
+    - image_url
+    type: object
+  dto.ReservationListItemResponse:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      reservation_date:
+        type: string
+      status:
+        type: string
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  dto.ReservationTripsSelectedRequest:
+    properties:
+      reservation_id:
+        type: string
+      selected_trips:
+        items:
+          $ref: '#/definitions/dto.TripsSelected'
+        type: array
+    type: object
+  dto.SeatDetailResponse:
+    properties:
+      id:
+        type: string
+      is_active:
+        type: boolean
+      left_columns_count:
+        type: integer
+      prefix:
+        type: boolean
+      right_columns_count:
+        type: integer
+    type: object
+  dto.Seats:
+    properties:
+      available_seats:
+        type: integer
+      occupied_units:
+        items:
+          type: string
+        type: array
+      total_seats:
+        type: integer
+    type: object
+  dto.ShipListItemResponse:
+    properties:
+      configuration_id:
+        type: string
+      id:
+        type: string
+      image_url:
+        items:
+          type: string
+        type: array
+      imo:
+        type: string
+      name:
+        type: string
+      organization_id:
+        type: string
+      passenger_capacity:
+        type: integer
+      status:
+        type: string
+      total_seats:
+        type: integer
+      type_ship:
+        type: string
+      weight_capacity:
+        type: number
+    type: object
+  dto.ShipResponse:
+    properties:
+      configuration_id:
+        type: string
+      id:
+        type: string
+      image_url:
+        items:
+          type: string
+        type: array
+      imo:
+        type: string
+      name:
+        type: string
+      organization_id:
+        type: string
+      passenger_capacity:
+        type: integer
+      status:
+        type: string
+      total_seats:
+        type: integer
+      type_ship:
+        type: string
+      weight_capacity:
+        type: number
+    type: object
+  dto.SuccessMessageResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  dto.TerminalDetailResponse:
+    properties:
+      active:
+        type: boolean
+      city_id:
+        type: integer
+      city_name:
+        type: string
+      id:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      name:
+        type: string
+      uf:
+        type: string
+    type: object
+  dto.TerminalListItemResponse:
+    properties:
+      active:
+        type: boolean
+      city_id:
+        type: integer
+      city_name:
+        type: string
+      id:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      name:
+        type: string
+      uf:
+        type: string
+    type: object
+  dto.TerminalListResponse:
+    properties:
+      current_page:
+        type: integer
+      terminals:
+        items:
+          $ref: '#/definitions/dto.TerminalListItemResponse'
+        type: array
+      total_count:
+        type: integer
+      total_pages:
+        type: integer
+    type: object
+  dto.TripConfigResponse:
+    properties:
+      created_at:
+        type: string
+      departure_time:
+        type: string
+      duration_days:
+        type: integer
+      expiration_date:
+        type: string
+      id:
+        type: string
+      recurrence:
+        type: string
+      route_id:
+        type: string
+      route_name:
+        type: string
+      ship_id:
+        type: string
+      ship_name:
+        type: string
+      start_date:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  dto.TripConfigResult:
+    properties:
+      arrival_time:
+        type: string
+      departure_time:
+        type: string
+      hora_extra:
+        type: integer
+      is_complete:
+        type: boolean
+      itinerary:
+        items:
+          $ref: '#/definitions/dto.Itinerary'
+        type: array
+      organization_id:
+        type: string
+      organization_name:
+        type: string
+      route_id:
+        type: string
+      route_name:
+        type: string
+    type: object
+  dto.TripConfigSearchRequest:
+    properties:
+      city_dest_id:
+        type: integer
+      city_origin_id:
+        type: integer
+      date_dest:
+        type: string
+      date_origin:
+        type: string
+      max_cost:
+        type: integer
+      max_results:
+        type: integer
+      max_stops:
+        type: integer
+      passenger_count_cabins:
+        type: integer
+      passenger_count_seats:
+        type: integer
+      ship_id:
+        type: string
+    type: object
+  dto.TripConfigSearchResponse:
+    properties:
+      path:
+        items:
+          $ref: '#/definitions/dto.PathStep'
+        type: array
+      total_cost:
+        type: integer
+    type: object
+  dto.TripResponseDTO:
+    properties:
+      arrival_date:
+        type: string
+      departure_date:
+        type: string
+      route_id:
+        type: string
+      ship_id:
+        type: string
+      trip_configuration_id:
+        type: string
+    type: object
+  dto.TripsSelected:
+    properties:
+      arrival_date:
+        type: string
+      departure_date:
+        type: string
+      occupied_units:
+        items:
+          type: string
+        type: array
+      route_id:
+        type: string
+      ship_id:
+        type: string
+      trip_configuration_id:
+        type: string
+    type: object
+  dto.UpdateCabinRequest:
+    properties:
+      bed_type:
+        type: string
+      capacity:
+        type: integer
+      description:
+        type: string
+      name:
+        type: string
+    type: object
+  dto.UpdateReservationRequest:
+    properties:
+      reservation_date:
+        type: string
+      status:
+        type: string
+      user_id:
+        type: string
+    type: object
+  dto.UpdateRouteRequest:
+    properties:
+      name:
+        type: string
+      organization_id:
+        type: string
+    required:
+    - name
+    - organization_id
+    type: object
+  dto.UpdateScheduleRequest:
+    properties:
+      active:
+        type: boolean
+      route_id:
+        type: string
+      terminal_id:
+        type: string
+      value:
+        type: number
+    required:
+    - route_id
+    - terminal_id
+    - value
+    type: object
+  dto.UpdateSeatRequest:
+    properties:
+      is_active:
+        type: boolean
+      left_columns_count:
+        type: integer
+      prefix:
+        type: boolean
+      right_columns_count:
+        type: integer
+    type: object
+  dto.UpdateShipRequest:
+    properties:
+      configuration_id:
+        type: string
+      imo:
+        type: string
+      name:
+        type: string
+      organization_id:
+        type: string
+      passenger_capacity:
+        type: integer
+      status:
+        type: string
+      total_seats:
+        type: integer
+      type_ship:
+        type: string
+      weight_capacity:
+        type: number
+    type: object
+  dto.UpdateTerminalRequest:
+    properties:
+      city_id:
+        type: integer
+      city_name:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      name:
+        type: string
+      uf:
+        type: string
+    required:
+    - name
+    - uf
+    type: object
+host: localhost:8002
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: Service for managing user identities, roles, and organizations.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Rio Livre Nautical Logistics API
+  version: v1.0.16
+paths:
+  /:
+    get:
+      description: Check the health of the service
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Health check
+      tags:
+      - health
+  /gps:
+    post:
+      consumes:
+      - application/json
+      description: 'Recebe latitude, longitude e timestamp enviados por um dispositivo
+        (ex: ESP32 com módulo GPS).'
+      parameters:
+      - description: Dados do GPS
+        in: body
+        name: gps
+        required: true
+        schema:
+          $ref: '#/definitions/dto.GPSRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: GPS data received successfully
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Invalid JSON
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Failed to process GPS data
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Recebe dados de localização GPS
+      tags:
+      - gps
+  /photos/upload-urls:
+    post:
+      consumes:
+      - application/json
+      description: Recebe múltiplos urls e envia para banco
+      parameters:
+      - description: Upload urls photos request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PhotosRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Not found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Faz upload de múltiplos arquivos direto para Banco
+      tags:
+      - photos
+  /reservations:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a paginated list of reservations.
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Number of items per page
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ListReservationResponse'
+            type: array
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: List Reservations
+      tags:
+      - reservations
+    post:
+      consumes:
+      - application/json
+      description: Create a new reservation with the provided details
+      parameters:
+      - description: Reservation details
+        in: body
+        name: terminal
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateReservationRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Reservation created successfully
+          schema:
+            $ref: '#/definitions/dto.SuccessMessageResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Create a new reservation
+      tags:
+      - reservations
+  /reservations/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a reservation by its ID.
+      parameters:
+      - description: Ship ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Invalid ID supplied
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Reservation not found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Delete a reservation
+      tags:
+      - reservations
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a Reservation by its ID.
+      parameters:
+      - description: Reservation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ReservationListItemResponse'
+        "400":
+          description: Invalid ID supplied
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Reservation not found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Get Reservation by ID
+      tags:
+      - reservations
+    put:
+      consumes:
+      - application/json
+      description: Update an existing reservation with the provided details
+      parameters:
+      - description: Reservation ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Updated reservation details
+        in: body
+        name: terminal
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateReservationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Reservation updated successfully
+          schema:
+            $ref: '#/definitions/dto.SuccessMessageResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: SHIP not found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Update a reservation
+      tags:
+      - reservations
+  /routes:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a paginated list of routes
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Number of items per page
+        in: query
+        name: per_page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ListRouteResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: List routes
+      tags:
+      - routes
+    post:
+      consumes:
+      - application/json
+      description: Create a new route with the provided details
+      parameters:
+      - description: Route to create
+        in: body
+        name: route
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateRouteRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Route created successfully
+          schema:
+            $ref: '#/definitions/dto.SuccessMessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Create a new route
+      tags:
+      - routes
+  /routes/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a specific route by its ID
+      parameters:
+      - description: Route ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Route deleted successfully
+          schema:
+            $ref: '#/definitions/dto.SuccessMessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Delete a route
+      tags:
+      - routes
+    get:
+      consumes:
+      - application/json
+      description: Retrieve details of a specific route by its ID
+      parameters:
+      - description: Route ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GetRouteDetailResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Get route details
+      tags:
+      - routes
+    put:
+      consumes:
+      - application/json
+      description: Update the details of an existing route by its ID
+      parameters:
+      - description: Route ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Route details to update
+        in: body
+        name: route
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateRouteRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Route updated successfully
+          schema:
+            $ref: '#/definitions/dto.SuccessMessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Update an existing route
+      tags:
+      - routes
+  /routes/search:
+    get:
+      consumes:
+      - application/json
+      description: Search for routes based on a query string with pagination
+      parameters:
+      - description: Search query
+        in: query
+        name: query
+        required: true
+        type: string
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Number of items per page
+        in: query
+        name: per_page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ListRouteResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Search routes
+      tags:
+      - routes
+  /schedules:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a paginated list of schedules
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Items per page
+        in: query
+        name: per_page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ListScheduleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: List schedules with pagination
+      tags:
+      - schedules
+    post:
+      consumes:
+      - application/json
+      description: Create a new schedule with the provided information
+      parameters:
+      - description: Schedule to create
+        in: body
+        name: schedule
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateScheduleRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.SuccessMessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Create a new schedule
+      tags:
+      - schedules
+  /schedules/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a schedule by its ID
+      parameters:
+      - description: Schedule ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SuccessMessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Delete a schedule by ID
+      tags:
+      - schedules
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a schedule by its ID
+      parameters:
+      - description: Schedule ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GetScheduleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Get a schedule by ID
+      tags:
+      - schedules
+    put:
+      consumes:
+      - application/json
+      description: Update an existing schedule with the provided information
+      parameters:
+      - description: Schedule ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Schedule to update
+        in: body
+        name: schedule
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateScheduleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SuccessMessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Update an existing schedule
+      tags:
+      - schedules
+  /schedules/search:
+    get:
+      consumes:
+      - application/json
+      description: Search schedules by a query string with pagination
+      parameters:
+      - description: Search query
+        in: query
+        name: query
+        required: true
+        type: string
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Items per page
+        in: query
+        name: per_page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ListScheduleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Search schedules with a query string
+      tags:
+      - schedules
+  /ships:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of ships with pagination.
+      parameters:
+      - description: Ship type (BOAT, FERRYBOAT or SHIP)
+        in: query
+        name: typeShip
+        type: string
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Number of items per page
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ListShipResponse'
+            type: array
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: List Ships
+      tags:
+      - ships
+    post:
+      consumes:
+      - application/json
+      description: Registers a new ship with the provided details.
+      parameters:
+      - description: SHIP Data to Create
+        in: body
+        name: organization
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateShipRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.ShipResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Create a new ship
+      tags:
+      - ships
+  /ships-config/cabins:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a cabins.
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Number of items per page
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CabinDetailResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: List Cabins
+      tags:
+      - cabins
+    post:
+      consumes:
+      - application/json
+      description: Registers a new cabin with the provided details.
+      parameters:
+      - description: Cabin Data to Create
+        in: body
+        name: organization
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCabinRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.CabinDetailResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Create a new cabin
+      tags:
+      - cabins
+  /ships-config/cabins/{id}:
+    delete:
+      description: Delete a cabin by ID
+      parameters:
+      - description: Cabin ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Invalid ID supplied
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Seat not found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Delete cabin
+      tags:
+      - cabins
+    put:
+      consumes:
+      - application/json
+      description: Updates an existing cabin with the provided details.
+      parameters:
+      - description: Cabin Data to Update
+        in: body
+        name: cabin
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateCabinRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.SeatDetailResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Update a cabin
+      tags:
+      - cabins
+  /ships-config/seats:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a seats.
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Number of items per page
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SeatDetailResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: List seats
+      tags:
+      - seats
+    post:
+      consumes:
+      - application/json
+      description: Registers a new seat with the provided details.
+      parameters:
+      - description: Seat Data to Create
+        in: body
+        name: organization
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateSeatRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.SeatDetailResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Create a new seat
+      tags:
+      - seats
+  /ships-config/seats/{id}:
+    delete:
+      description: Delete a seat by ID
+      parameters:
+      - description: Seat ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Invalid ID supplied
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Seat not found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Delete seat
+      tags:
+      - seats
+    put:
+      consumes:
+      - application/json
+      description: Updates an existing seat with the provided details.
+      parameters:
+      - description: Seat Data to Update
+        in: body
+        name: seat
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateSeatRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.SeatDetailResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Update a seat
+      tags:
+      - seats
+  /ships-config/units/search:
+    get:
+      consumes:
+      - application/json
+      description: Searches for seats based on available date range.
+      parameters:
+      - description: Data de Início (YYYY-MM-DD)
+        in: query
+        name: dateorigin
+        required: true
+        type: string
+      - description: Data de Fim (YYYY-MM-DD)
+        in: query
+        name: datedest
+        required: true
+        type: string
+      - description: 'ID Barco: uuid'
+        in: query
+        name: shipid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.ListUnitAvailableResponse'
+            type: array
+      summary: Search Available Seats
+      tags:
+      - seats
+  /ships/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a ship by its ID.
+      parameters:
+      - description: Ship ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Invalid ID supplied
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Ship not found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Delete a ship
+      tags:
+      - ships
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a Ship by their ID.
+      parameters:
+      - description: Ship type (BOAT, FERRYBOAT or SHIP)
+        in: query
+        name: typeShip
+        type: string
+      - description: Ship ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ShipResponse'
+        "400":
+          description: Invalid SHip ID
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Ship not found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Get Ship by ID
+      tags:
+      - ships
+    put:
+      consumes:
+      - application/json
+      description: Updates an existing ship with the provided details.
+      parameters:
+      - description: Ship ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Ship Data to Update
+        in: body
+        name: ship
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateShipRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ShipResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: SHIP not found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Update a ship
+      tags:
+      - ships
+  /terminals:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a paginated list of terminals
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Items per page
+        in: query
+        name: per_page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TerminalListResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: List terminals with pagination
+      tags:
+      - terminals
+    post:
+      consumes:
+      - application/json
+      description: Create a new terminal with the provided details
+      parameters:
+      - description: Terminal details
+        in: body
+        name: terminal
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateTerminalRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Terminal created successfully
+          schema:
+            $ref: '#/definitions/dto.SuccessMessageResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Create a new terminal
+      tags:
+      - terminals
+  /terminals/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a terminal using its ID
+      parameters:
+      - description: Terminal ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Terminal not found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Delete a terminal by ID
+      tags:
+      - terminals
+    get:
+      consumes:
+      - application/json
+      description: Retrieve terminal details by its ID
+      parameters:
+      - description: Terminal ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TerminalDetailResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Terminal not found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Get a terminal by ID
+      tags:
+      - terminals
+    put:
+      consumes:
+      - application/json
+      description: Update terminal details by its ID
+      parameters:
+      - description: Terminal ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Updated terminal details
+        in: body
+        name: terminal
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateTerminalRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Terminal updated successfully
+          schema:
+            $ref: '#/definitions/dto.SuccessMessageResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "404":
+          description: Terminal not found
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Update an existing terminal
+      tags:
+      - terminals
+  /terminals/cities:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of all cities that have terminals
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CityListItemResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: List all cities with terminals
+      tags:
+      - terminals
+  /terminals/search:
+    get:
+      consumes:
+      - application/json
+      description: Search for terminals using a query string with pagination
+      parameters:
+      - description: Search query
+        in: query
+        name: query
+        type: integer
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Items per page
+        in: query
+        name: per_page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TerminalListResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Search terminals with pagination
+      tags:
+      - terminals
+  /trips:
+    post:
+      consumes:
+      - application/json
+      description: Validated and Create a new trip for reservation
+      parameters:
+      - description: Trips Instance Details
+        in: body
+        name: terminal
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ReservationTripsSelectedRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.SuccessMessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Validated and Create a new trip for reservation
+      tags:
+      - trips
+  /trips-config:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a paginated list of trips.
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Items per page
+        in: query
+        name: per_page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TripConfigResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: List Trip Config
+      tags:
+      - trips-config
+    post:
+      consumes:
+      - application/json
+      description: Registers a new Trip Config with the provided details.
+      parameters:
+      - description: Trip Config Data to Create
+        in: body
+        name: organization
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateTripConfigRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.TripConfigResponse'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Create a new Trip Config
+      tags:
+      - trips-config
+  /trips-config/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a Trip Config by its ID.
+      parameters:
+      - description: Trip Config ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SuccessMessageResponse'
+        "400":
+          description: Invalid Trip Config ID
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Delete a Trip Config
+      tags:
+      - trips-config
+  /trips/catalogo:
+    post:
+      consumes:
+      - application/json
+      description: Validates if the route has all required cyties between origin and
+        destination
+      parameters:
+      - description: Trip search data
+        in: body
+        name: trip
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TripConfigSearchRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TripConfigResult'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Validate trip stops sequence
+      tags:
+      - trips
+  /trips/catalogo/menor-preco:
+    post:
+      consumes:
+      - application/json
+      description: Validates if the route has all required cyties between origin and
+        destination
+      parameters:
+      - description: Trip search
+        in: body
+        name: trip
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TripConfigSearchRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TripConfigSearchResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: Validate trip stops sequence and find the cheapest path
+      tags:
+      - trips
+  /trips/search:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of trips with optional filters for routes, ships,
+        and dates.
+      parameters:
+      - description: Route UUID
+        in: query
+        name: route_id
+        type: string
+      - description: Ship UUID
+        in: query
+        name: ship_id
+        type: string
+      - description: Trip Config UUID
+        in: query
+        name: trip_configurations_id
+        type: string
+      - description: 'Format: RFC3339 (e.g. 2026-10-21T01:00:00Z)'
+        in: query
+        name: departure_after
+        type: string
+      - description: 'Format: RFC3339'
+        in: query
+        name: departure_before
+        type: string
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TripResponseDTO'
+            type: array
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/dto.ErrorResponse'
+      summary: List Trips
+      tags:
+      - trips
+schemes:
+- http
+- https
+swagger: "2.0"

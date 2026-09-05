@@ -1,0 +1,3 @@
+ALTER TABLE terminals 
+ADD COLUMN city_id INTEGER REFERENCES cities(id) ON DELETE CASCADE;
+-- DROP COLUMN city;

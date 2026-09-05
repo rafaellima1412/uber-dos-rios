@@ -1,0 +1,6 @@
+server:
+  port: ":8002"
+  host: "nautical-api.riolivre.com.br"
+
+database:
+  url: "postgres://riolivre_usr:%23R10L1vr3pwd%23@postgres-hml-service.database.svc.cluster.local:5432/rio_livre_db?sslmode=disable"

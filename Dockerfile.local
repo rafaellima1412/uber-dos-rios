@@ -1,0 +1,38 @@
+# Dockerfile
+
+# ---- Estágio de Build ----
+FROM golang:1.24-alpine AS builder
+
+WORKDIR /app
+
+# Copia os arquivos de mod e baixa as dependências
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copia todo o código-fonte
+COPY . .
+
+# Compila a aplicação
+# -o /app/server: output do binário
+# CGO_ENABLED=0: cria um binário estático
+RUN CGO_ENABLED=0 go build -o /app/server ./cmd/api/main.go
+
+# ---- Estágio de Produção ----
+FROM alpine:latest
+
+WORKDIR /app
+
+# Copia apenas o binário compilado do estágio de build
+COPY --from=builder /app/server .
+
+# Copia o arquivo de configuração
+COPY configs/config.local.yaml ./configs/config.local.yaml
+
+# Define o modo release do Gin
+ENV GIN_MODE=release
+
+# Expõe a porta que a aplicação vai usar
+EXPOSE 8000
+
+# Comando para rodar a aplicação
+CMD ["./server"]
