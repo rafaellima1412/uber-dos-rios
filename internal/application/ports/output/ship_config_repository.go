@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/riolivre/nautical_logistics/internal/application/domain"
+	"github.com/rafaellima1412/uber-dos-rios/internal/application/domain"
 )
 
 // SeatRepository defines the interface for ship data persistence.

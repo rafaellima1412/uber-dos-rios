@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/google/uuid"
-	"github.com/riolivre/nautical_logistics/internal/application/domain"
-	"github.com/riolivre/nautical_logistics/internal/application/ports/input"
+	"github.com/rafaellima1412/uber-dos-rios/internal/application/domain"
+	"github.com/rafaellima1412/uber-dos-rios/internal/application/ports/input"
 )
 
 // TripRepository defines the interface for trip data persistence.

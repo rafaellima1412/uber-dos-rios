@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/riolivre/nautical_logistics/internal/application/ports/input"
+	"github.com/rafaellima1412/uber-dos-rios/internal/application/ports/input"
 )
 
 type DFSTripsUseCase struct{}

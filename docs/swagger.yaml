@@ -733,7 +733,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: http://swagger.io/terms/
-  title: Rio Livre Nautical Logistics API
+  title: Uber dos Rios API
   version: v1.0.16
 paths:
   /:

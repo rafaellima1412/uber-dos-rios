@@ -4,9 +4,9 @@ import (
 	"context"
 
 	"github.com/jackc/pgx/v5/pgxpool"
-	"github.com/riolivre/nautical_logistics/internal/common"
-	"github.com/riolivre/nautical_logistics/internal/config"
-	"github.com/riolivre/nautical_logistics/internal/logger"
+	"github.com/rafaellima1412/uber-dos-rios/internal/common"
+	"github.com/rafaellima1412/uber-dos-rios/internal/config"
+	"github.com/rafaellima1412/uber-dos-rios/internal/logger"
 	"go.uber.org/zap"
 )
 

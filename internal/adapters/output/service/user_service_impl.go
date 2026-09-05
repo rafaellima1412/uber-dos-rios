@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/riolivre/nautical_logistics/internal/application/ports/output"
+	"github.com/rafaellima1412/uber-dos-rios/internal/application/ports/output"
 )
 
 type userServiceImpl struct {

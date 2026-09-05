@@ -3,7 +3,7 @@ package output
 import (
 	"context"
 
-	"github.com/riolivre/nautical_logistics/internal/application/domain"
+	"github.com/rafaellima1412/uber-dos-rios/internal/application/domain"
 )
 
 type ScheduleRepository interface {

@@ -3530,7 +3530,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:8002",
 	BasePath:         "/api/v1",
 	Schemes:          []string{"http", "https"},
-	Title:            "Rio Livre Nautical Logistics API",
+	Title:            "Uber dos Rios API",
 	Description:      "Service for managing user identities, roles, and organizations.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

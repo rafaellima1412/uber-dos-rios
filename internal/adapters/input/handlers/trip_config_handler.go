@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/riolivre/nautical_logistics/internal/adapters/input/http/dto"
-	"github.com/riolivre/nautical_logistics/internal/application/ports/input"
-	"github.com/riolivre/nautical_logistics/internal/logger"
+	"github.com/rafaellima1412/uber-dos-rios/internal/adapters/input/http/dto"
+	"github.com/rafaellima1412/uber-dos-rios/internal/application/ports/input"
+	"github.com/rafaellima1412/uber-dos-rios/internal/logger"
 	"go.uber.org/zap"
 )
 

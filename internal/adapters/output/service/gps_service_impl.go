@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/riolivre/nautical_logistics/internal/adapters/input/http/dto"
-	"github.com/riolivre/nautical_logistics/internal/application/domain"
-	"github.com/riolivre/nautical_logistics/internal/application/ports/output"
+	"github.com/rafaellima1412/uber-dos-rios/internal/adapters/input/http/dto"
+	"github.com/rafaellima1412/uber-dos-rios/internal/application/domain"
+	"github.com/rafaellima1412/uber-dos-rios/internal/application/ports/output"
 )
 
 type GPSService struct {

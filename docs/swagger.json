@@ -6,7 +6,7 @@
     "swagger": "2.0",
     "info": {
         "description": "Service for managing user identities, roles, and organizations.",
-        "title": "Rio Livre Nautical Logistics API",
+        "title": "Uber dos Rios API",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "API Support",

@@ -6,19 +6,19 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
-	projectDocs "github.com/riolivre/nautical_logistics/docs"
-	"github.com/riolivre/nautical_logistics/internal/adapters/input/handlers"
-	httpadapter "github.com/riolivre/nautical_logistics/internal/adapters/input/http"
-	"github.com/riolivre/nautical_logistics/internal/adapters/output/repository/postgres"
-	"github.com/riolivre/nautical_logistics/internal/adapters/output/service"
-	"github.com/riolivre/nautical_logistics/internal/application/usecase"
+	projectDocs "github.com/rafaellima1412/uber-dos-rios/docs"
+	"github.com/rafaellima1412/uber-dos-rios/internal/adapters/input/handlers"
+	httpadapter "github.com/rafaellima1412/uber-dos-rios/internal/adapters/input/http"
+	"github.com/rafaellima1412/uber-dos-rios/internal/adapters/output/repository/postgres"
+	"github.com/rafaellima1412/uber-dos-rios/internal/adapters/output/service"
+	"github.com/rafaellima1412/uber-dos-rios/internal/application/usecase"
 
-	"github.com/riolivre/nautical_logistics/internal/config"
-	"github.com/riolivre/nautical_logistics/internal/logger"
+	"github.com/rafaellima1412/uber-dos-rios/internal/config"
+	"github.com/rafaellima1412/uber-dos-rios/internal/logger"
 	"go.uber.org/zap"
 )
 
-// @title           Rio Livre Nautical Logistics API
+// @title           Uber dos Rios API
 // @version         v1.0.21
 // @description     Service for managing user identities, roles, and organizations.
 // @termsOfService  http://swagger.io/terms/

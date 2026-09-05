@@ -3,8 +3,8 @@ package config
 import (
 	"os"
 
-	"github.com/riolivre/nautical_logistics/internal/common"
-	"github.com/riolivre/nautical_logistics/internal/logger"
+	"github.com/rafaellima1412/uber-dos-rios/internal/common"
+	"github.com/rafaellima1412/uber-dos-rios/internal/logger"
 	"go.uber.org/zap"
 	"gopkg.in/yaml.v3"
 )

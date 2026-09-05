@@ -1,4 +1,4 @@
-module github.com/riolivre/nautical_logistics
+module github.com/rafaellima1412/uber-dos-rios
 
 go 1.24.7
 

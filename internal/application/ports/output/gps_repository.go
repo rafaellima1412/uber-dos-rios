@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/google/uuid"
-	"github.com/riolivre/nautical_logistics/internal/application/domain"
+	"github.com/rafaellima1412/uber-dos-rios/internal/application/domain"
 )
 type GPSRepository interface {
 	CreateGPS(ctx context.Context, gps *domain.GPS) error

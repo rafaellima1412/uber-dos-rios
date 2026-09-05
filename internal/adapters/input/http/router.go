@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/riolivre/nautical_logistics/internal/adapters/input/handlers"
+	"github.com/rafaellima1412/uber-dos-rios/internal/adapters/input/handlers"
 
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"

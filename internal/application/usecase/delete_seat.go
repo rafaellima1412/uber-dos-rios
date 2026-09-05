@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
-	"github.com/riolivre/nautical_logistics/internal/application/ports/output"
-	"github.com/riolivre/nautical_logistics/internal/logger"
+	"github.com/rafaellima1412/uber-dos-rios/internal/application/ports/output"
+	"github.com/rafaellima1412/uber-dos-rios/internal/logger"
 	"go.uber.org/zap"
 )
 

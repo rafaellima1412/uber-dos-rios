@@ -1,4 +1,4 @@
-Uber dos Rios
+# Uber dos Rios API
 
 API REST em Go para gestão de **transporte fluvial de passageiros** (o "Uber dos Rios"): cadastro de embarcações, configuração de assentos e camarotes, terminais, rotas, horários, viagens, reservas de passagens, upload de fotos e rastreamento por GPS. Construída em Clean Architecture, com Postgres, Gin e documentação Swagger.
 
@@ -132,6 +132,9 @@ A lista completa e os schemas de request/response estão no Swagger (`/docs/inde
 
 As migrations em `migrations/` (formato `NNNNNN_descricao.up.sql` / `.down.sql`, compatível com `golang-migrate`) descrevem a evolução do schema: tipos de organização → organizações/usuários/memberships → embarcações e suas configurações de assento/camarote → rotas e terminais → horários e viagens → reservas, passageiros/tickets e bagagens → posições de GPS → índices de performance.
 
+## Status
+
+Projeto ativo. Módulo Go: `github.com/rafaellima1412/uber-dos-rios`. Já possui host de homologação configurado e versão documentada no Swagger (`v1.0.21`).
 
 ## Possíveis próximos passos
 

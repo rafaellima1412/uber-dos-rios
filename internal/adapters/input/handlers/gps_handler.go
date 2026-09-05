@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/riolivre/nautical_logistics/internal/adapters/input/http/dto"
-	"github.com/riolivre/nautical_logistics/internal/adapters/output/service"
+	"github.com/rafaellima1412/uber-dos-rios/internal/adapters/input/http/dto"
+	"github.com/rafaellima1412/uber-dos-rios/internal/adapters/output/service"
 )
 
 // GPSHandler lida com requisições HTTP relacionadas ao GPS.
