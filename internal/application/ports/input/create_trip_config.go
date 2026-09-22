@@ -18,11 +18,11 @@ type CreateTripConfigInput struct {
 	ArrivalTime    string    // "HH:MM:SS"
 	DurationDays   int
 	StartDate      time.Time // TIMESTAMPTZ
-}	
+}
 
 // CreateTripOutput represents the output data after creating a new trip.
 type CreateTripConfigOutput struct {
-	ID uuid.UUID
+	ID             uuid.UUID
 	ShipID         uuid.UUID
 	RouteID        uuid.UUID
 	Recurrence     string

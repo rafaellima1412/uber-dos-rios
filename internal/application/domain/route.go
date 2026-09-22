@@ -19,10 +19,10 @@ type Route struct {
 
 // GetRouteOrganizationOutput represents the organization details in the GetRoute output.
 type GetRouteOrganizationOutput struct {
-	ID   uuid.UUID
-	Type string
-	Name string
-	CNPJ *string
-	Email *string
+	ID          uuid.UUID
+	Type        string
+	Name        string
+	CNPJ        *string
+	Email       *string
 	PhoneNumber *string
 }

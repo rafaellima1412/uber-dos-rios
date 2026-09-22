@@ -10,13 +10,12 @@ type SearchSeatInput struct {
 	PerPage int
 }
 
-
 // SearchSeatSummary is a summary representation of a trip.
 type SearchSeatSummary struct {
-	SeatID string
-	Nivel  int
-	Prefix bool
-	IsActive bool	
+	SeatID            string
+	Nivel             int
+	Prefix            bool
+	IsActive          bool
 	LeftColumnsCount  int
 	RightColumnsCount int
 }
@@ -31,6 +30,5 @@ type SearchSeatOutput struct {
 
 // SearchTripUseCase defines the interface for the use case of searching trips.
 type SearchSeatUseCase interface {
-	Execute(ctx context.Context, isactive bool, prefix bool,inputSearch SearchSeatInput) (*SearchSeatOutput, error)
+	Execute(ctx context.Context, isactive bool, prefix bool, inputSearch SearchSeatInput) (*SearchSeatOutput, error)
 }
-

@@ -15,7 +15,6 @@ import (
 
 type updateReservationUseCase struct {
 	reservationRepo output.ReservationRepository
-
 }
 
 func NewUpdateReservationUseCase(reservationRepo output.ReservationRepository) *updateReservationUseCase {
@@ -41,11 +40,11 @@ func (uc *updateReservationUseCase) Execute(ctx context.Context, inputDTO *input
 		Status:          domain.ReservationStatus(inputDTO.Status),
 		UpdatedAt:       func() *time.Time { t := time.Now(); return &t }(),
 	}
-	
+
 	err = uc.reservationRepo.UpdateReservation(ctx, reservationDomian)
 	if err != nil {
 		return err
 	}
-	logger.Info("Reservation updated successfully", zap.String("reservation_id",reservation.ID.String()))
+	logger.Info("Reservation updated successfully", zap.String("reservation_id", reservation.ID.String()))
 	return nil
 }

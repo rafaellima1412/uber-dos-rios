@@ -339,10 +339,10 @@ func (h *TripHandler) SearchTrips(c *gin.Context) {
 	}
 
 	useCaseInput := input.TripFilterInput{
-		RouteID:              filters.RouteID,
-		ShipID:               filters.ShipID,
-		DepartureAfter:       filters.DepartureAfter,
-		DepartureBefore:      filters.DepartureBefore,
+		RouteID:         filters.RouteID,
+		ShipID:          filters.ShipID,
+		DepartureAfter:  filters.DepartureAfter,
+		DepartureBefore: filters.DepartureBefore,
 	}
 
 	result, err := h.searchTripUseCase.Execute(c.Request.Context(), &useCaseInput, searchTripInput)

@@ -92,12 +92,12 @@ func (h *RouteHandler) GetRoute(c *gin.Context) {
 		Name:   output.Name,
 		Active: output.Active,
 		OrganizationOutpt: dto.OrganizationDetailResponse{
-			ID:            output.OrganizationOutput.ID,
-			Type:          output.OrganizationOutput.Type,
-			Name:          output.OrganizationOutput.Name,
-			CNPJ:          output.OrganizationOutput.CNPJ,
-			Email:         output.OrganizationOutput.Email,
-			PhoneNumber:   output.OrganizationOutput.PhoneNumber,
+			ID:          output.OrganizationOutput.ID,
+			Type:        output.OrganizationOutput.Type,
+			Name:        output.OrganizationOutput.Name,
+			CNPJ:        output.OrganizationOutput.CNPJ,
+			Email:       output.OrganizationOutput.Email,
+			PhoneNumber: output.OrganizationOutput.PhoneNumber,
 		},
 	}
 
@@ -221,12 +221,12 @@ func (h *RouteHandler) ListRoutes(c *gin.Context) {
 			Name:   route.Name,
 			Active: route.Active,
 			OrganizationOutpt: dto.OrganizationDetailResponse{
-				ID:            route.OrganizationOutput.ID,
-				Type:          route.OrganizationOutput.Type,
-				Name:          route.OrganizationOutput.Name,
-				CNPJ:          route.OrganizationOutput.CNPJ,
-				Email:         route.OrganizationOutput.Email,
-				PhoneNumber:   route.OrganizationOutput.PhoneNumber,
+				ID:          route.OrganizationOutput.ID,
+				Type:        route.OrganizationOutput.Type,
+				Name:        route.OrganizationOutput.Name,
+				CNPJ:        route.OrganizationOutput.CNPJ,
+				Email:       route.OrganizationOutput.Email,
+				PhoneNumber: route.OrganizationOutput.PhoneNumber,
 			},
 		}
 	}
@@ -298,12 +298,12 @@ func (h *RouteHandler) SearchRoutes(c *gin.Context) {
 			Name:   route.Name,
 			Active: route.Active,
 			OrganizationOutpt: dto.OrganizationDetailResponse{
-				ID:            route.OrganizationOutput.ID,
-				Type:          route.OrganizationOutput.Type,
-				Name:          route.OrganizationOutput.Name,
-				CNPJ:          route.OrganizationOutput.CNPJ,
-				Email:         route.OrganizationOutput.Email,
-				PhoneNumber:   route.OrganizationOutput.PhoneNumber,
+				ID:          route.OrganizationOutput.ID,
+				Type:        route.OrganizationOutput.Type,
+				Name:        route.OrganizationOutput.Name,
+				CNPJ:        route.OrganizationOutput.CNPJ,
+				Email:       route.OrganizationOutput.Email,
+				PhoneNumber: route.OrganizationOutput.PhoneNumber,
 			},
 		}
 	}

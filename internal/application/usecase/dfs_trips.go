@@ -128,7 +128,7 @@ func (uc *DFSTripsUseCase) dfs(
 
 		return
 	}
-	
+
 	last := path[len(path)-1]
 
 	for _, edge := range graph[current] {

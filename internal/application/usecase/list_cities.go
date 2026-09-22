@@ -1,12 +1,15 @@
 package usecase
+
 import (
 	"context"
 	"github.com/rafaellima1412/uber-dos-rios/internal/application/ports/input"
 	"github.com/rafaellima1412/uber-dos-rios/internal/application/ports/output"
 )
+
 type listCitiesUseCase struct {
 	terminalRepository output.TerminalRepository
 }
+
 func NewListCitiesUseCase(terminalRepository output.TerminalRepository) input.ListCitiesUseCase {
 	return &listCitiesUseCase{
 		terminalRepository: terminalRepository,

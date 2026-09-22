@@ -93,7 +93,7 @@ func (t *tripRepositoryImpl) UpdateTrip(ctx context.Context, trip *domain.Trip) 
 
 // SearchTrips implements [output.TripRepository].
 func (r *tripRepositoryImpl) FilterTrips(ctx context.Context, filter *domain.TripFilter, limit int, offset int) ([]*domain.Trip, error) {
-    baseQuery := `
+	baseQuery := `
         SELECT 
             id, 
             route_id, 
@@ -102,67 +102,67 @@ func (r *tripRepositoryImpl) FilterTrips(ctx context.Context, filter *domain.Tri
             departure_at, 
             arrival_at 
         FROM trips`
-    
-    var conditions []string
-    var args []interface{}
-    placeholderIdx := 1
 
-    addCondition := func(condition string, value interface{}) {
-        conditions = append(conditions, fmt.Sprintf("%s $%d", condition, placeholderIdx))
-        args = append(args, value)
-        placeholderIdx++
-    }
+	var conditions []string
+	var args []interface{}
+	placeholderIdx := 1
 
-    if filter.ShipID != nil {
-        addCondition("ship_id =", filter.ShipID)
-    }
+	addCondition := func(condition string, value interface{}) {
+		conditions = append(conditions, fmt.Sprintf("%s $%d", condition, placeholderIdx))
+		args = append(args, value)
+		placeholderIdx++
+	}
 
-    if filter.RouteID != nil {
-        addCondition("route_id =", filter.RouteID)
-    }
+	if filter.ShipID != nil {
+		addCondition("ship_id =", filter.ShipID)
+	}
 
-    if filter.DepartureAfter != nil && !filter.DepartureAfter.IsZero() {
-        addCondition("departure_at >=", *filter.DepartureAfter)
-    }
+	if filter.RouteID != nil {
+		addCondition("route_id =", filter.RouteID)
+	}
 
-    if filter.DepartureBefore != nil && !filter.DepartureBefore.IsZero() {
-        addCondition("departure_at <=", *filter.DepartureBefore)
-    }
+	if filter.DepartureAfter != nil && !filter.DepartureAfter.IsZero() {
+		addCondition("departure_at >=", *filter.DepartureAfter)
+	}
 
-    sql := baseQuery
-    if len(conditions) > 0 {
-        sql += " WHERE " + strings.Join(conditions, " AND ")
-    }
-		
-    sql += fmt.Sprintf(" ORDER BY departure_at DESC LIMIT $%d OFFSET $%d", placeholderIdx, placeholderIdx+1)
-    args = append(args, limit, offset)
+	if filter.DepartureBefore != nil && !filter.DepartureBefore.IsZero() {
+		addCondition("departure_at <=", *filter.DepartureBefore)
+	}
 
-    rows, err := r.db.Query(ctx, sql, args...)
-    if err != nil {
-        return nil, fmt.Errorf("error executing query: %w", err)
-    }
-    defer rows.Close()
+	sql := baseQuery
+	if len(conditions) > 0 {
+		sql += " WHERE " + strings.Join(conditions, " AND ")
+	}
 
-    var trips []*domain.Trip
-    for rows.Next() {
-        var trip domain.Trip
-        err := rows.Scan(
-            &trip.ID,
-            &trip.RouteID,
-            &trip.ShipID,
-            &trip.TripConfigurationID,
-            &trip.DepartureAt,
-            &trip.ArrivalAt,
-        )
-        if err != nil {
-            return nil, fmt.Errorf("error scanning trip: %w", err)
-        }
-        trips = append(trips, &trip)
-    }
+	sql += fmt.Sprintf(" ORDER BY departure_at DESC LIMIT $%d OFFSET $%d", placeholderIdx, placeholderIdx+1)
+	args = append(args, limit, offset)
 
-    if err := rows.Err(); err != nil {
-        return nil, fmt.Errorf("error iterating trips rows: %w", err)
-    }
+	rows, err := r.db.Query(ctx, sql, args...)
+	if err != nil {
+		return nil, fmt.Errorf("error executing query: %w", err)
+	}
+	defer rows.Close()
 
-    return trips, nil
+	var trips []*domain.Trip
+	for rows.Next() {
+		var trip domain.Trip
+		err := rows.Scan(
+			&trip.ID,
+			&trip.RouteID,
+			&trip.ShipID,
+			&trip.TripConfigurationID,
+			&trip.DepartureAt,
+			&trip.ArrivalAt,
+		)
+		if err != nil {
+			return nil, fmt.Errorf("error scanning trip: %w", err)
+		}
+		trips = append(trips, &trip)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, fmt.Errorf("error iterating trips rows: %w", err)
+	}
+
+	return trips, nil
 }

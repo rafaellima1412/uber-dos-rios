@@ -7,10 +7,10 @@ import (
 )
 
 type CabinLayout struct {
-	Andar            int
-	Lado             string
-	Local            string
-	Identificador    string
+	Andar         int
+	Lado          string
+	Local         string
+	Identificador string
 }
 
 type CabinDetails struct {
@@ -26,5 +26,3 @@ type CabinDetails struct {
 type Cabin struct {
 	Cabins []CabinDetails
 }
-
-

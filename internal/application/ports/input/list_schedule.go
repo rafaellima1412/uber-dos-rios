@@ -8,13 +8,13 @@ type ListScheduleInput struct {
 }
 
 type ScheduleSummary struct {
-	ID         string
-	RouteID    string
-	TerminalID string
+	ID          string
+	RouteID     string
+	TerminalID  string
 	TenimalName string
-	RouteName string
-	Value      float64
-	Active     bool
+	RouteName   string
+	Value       float64
+	Active      bool
 }
 
 type ListScheduleOutput struct {

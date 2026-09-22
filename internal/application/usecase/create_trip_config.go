@@ -95,7 +95,7 @@ func (uc *createTripConfigUseCase) Execute(ctx context.Context, inputTrip *input
 	if diff < 8*time.Hour {
 		return fmt.Errorf("o intervalo deve ser de no mínimo 8 horas, mas foi de %v", diff)
 	}
-	
+
 	// t2, err := time.Parse("2006-01-02", inputTrip.StartDate)
 	// if err != nil {
 	// 	logger.Error("Error Parse Date", zap.Error(err))

@@ -39,8 +39,8 @@ func (uc *CreateReservationUseCase) Execute(ctx context.Context, input *input.Cr
 		CreatedAt:       time.Now(),
 	}
 
-	 id, err := uc.reservationRepo.CreateReservation(ctx, reservation)
-	 if err != nil {
+	id, err := uc.reservationRepo.CreateReservation(ctx, reservation)
+	if err != nil {
 		return "", fmt.Errorf("failed to create reservation: %w", err)
 	}
 

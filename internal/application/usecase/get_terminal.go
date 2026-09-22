@@ -44,7 +44,7 @@ func (g *getTerminalUseCase) Execute(ctx context.Context, id string) (*input.Get
 		ID:        terminal.ID,
 		Name:      terminal.Name,
 		UF:        terminal.UF,
-		CityID:      terminal.CityID,
+		CityID:    terminal.CityID,
 		Latitude:  terminal.Latitude,
 		Longitude: terminal.Longitude,
 		Active:    terminal.Activity,

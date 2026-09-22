@@ -14,7 +14,7 @@ type GetSeatUseCase struct {
 }
 
 func NewGetSeatUseCase(seatRepo output.ShipConfigRepository) *GetSeatUseCase {
-	return &GetSeatUseCase{	
+	return &GetSeatUseCase{
 		seatRepo: seatRepo,
 	}
 }

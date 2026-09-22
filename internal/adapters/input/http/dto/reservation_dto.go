@@ -16,7 +16,7 @@ type UpdateReservationRequest struct {
 	Status          string `json:"status"`
 }
 
-//List Reservation
+// List Reservation
 type ReservationTripConfigurationResponse struct {
 	ReservationID       string   `json:"reservation_id"`
 	TripConfigurationID string   `json:"trip_configuration_id"`

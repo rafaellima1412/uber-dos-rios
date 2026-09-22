@@ -108,7 +108,7 @@ func (h *ScheduleHandler) GetSchedule(c *gin.Context) {
 			ID:        schedule.Terminal.ID.String(),
 			Name:      schedule.Terminal.Name,
 			UF:        schedule.Terminal.UF,
-			CityID:      schedule.Terminal.CityID,
+			CityID:    schedule.Terminal.CityID,
 			Latitude:  schedule.Terminal.Latitude,
 			Longitude: schedule.Terminal.Longitude,
 			Active:    schedule.Terminal.Active,

@@ -7,5 +7,4 @@ import (
 
 type DeleteTripConfigUseCase interface {
 	Execute(ctx context.Context, id string) error
-}	
-
+}

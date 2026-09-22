@@ -15,5 +15,3 @@ const (
 	INACTIVE    ShipStatus = "INACTIVE"    // não disponível para viagens
 	MAINTENANCE ShipStatus = "MAINTENANCE" // em manutenção
 )
-
-

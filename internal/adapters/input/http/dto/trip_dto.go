@@ -1,7 +1,7 @@
 package dto
 
 type TripsSelected struct {
-	TripConfigurationID string `json:"trip_configuration_id"`
+	TripConfigurationID string   `json:"trip_configuration_id"`
 	ShipID              string   `json:"ship_id"`
 	RouteID             string   `json:"route_id"`
 	DepartureAt         string   `json:"departure_date"`
@@ -10,7 +10,7 @@ type TripsSelected struct {
 }
 
 type ReservationTripsSelectedRequest struct {
-	ReservationID       string   `json:"reservation_id"`
+	ReservationID string          `json:"reservation_id"`
 	SelectedTrips []TripsSelected `json:"selected_trips"`
 }
 
@@ -21,5 +21,3 @@ type TripsSelectedResponse struct {
 	DepartureAt         string `json:"departure_date"`
 	ArrivalAt           string `json:"arrival_date"`
 }
-
-

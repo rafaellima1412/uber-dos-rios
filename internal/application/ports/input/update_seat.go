@@ -26,5 +26,5 @@ type UpdateSeatOutput struct {
 }
 
 type UpdateSeatUseCase interface {
-	Execute(ctx context.Context, input *UpdateSeatInput, id uuid.UUID)  error
+	Execute(ctx context.Context, input *UpdateSeatInput, id uuid.UUID) error
 }

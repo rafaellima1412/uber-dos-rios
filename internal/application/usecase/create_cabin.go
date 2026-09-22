@@ -41,8 +41,8 @@ func (uc *CreateCabinUsecase) Execute(ctx context.Context, inputDTO *input.Creat
 			CreatedAt:   time.Now(),
 		}
 		cabinEntity := domain.Cabin{
-        Cabins: []domain.CabinDetails{detail},
-    }
+			Cabins: []domain.CabinDetails{detail},
+		}
 		cabinsDomain = append(cabinsDomain, cabinEntity)
 	}
 

@@ -51,18 +51,18 @@ func (uc *ListReservationUseCase) Execute(ctx context.Context, inputReservation 
 		// }
 
 		summaries = append(summaries, input.ReservationSummary{
-			ID:                 reservation.ID.String(),
-			UserID:             reservation.UserID.String(),
+			ID:     reservation.ID.String(),
+			UserID: reservation.UserID.String(),
 			// UserFullName:       reservation.UserFullName,
 			// RouteID:            reservation.RouteID,
 			// RouteName:          reservation.RouteName,
 			// ShipID:             reservation.ShipID,
 			// ShipName:           reservation.ShipName,
 			// ReservationName:    reservation.ReservationName,
-			ReservationDate:    reservation.ReservationDate,
-			Status:             reservation.Status,
-			CreatedAt:          reservation.CreatedAt,
-			UpdatedAt:          reservation.UpdatedAt,
+			ReservationDate: reservation.ReservationDate,
+			Status:          reservation.Status,
+			CreatedAt:       reservation.CreatedAt,
+			UpdatedAt:       reservation.UpdatedAt,
 			// TripConfigurations: configs,
 		})
 	}

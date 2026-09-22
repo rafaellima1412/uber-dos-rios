@@ -91,7 +91,7 @@ func (h *ReservationHandler) CreateReservation(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusCreated, gin.H{
-		"id":               resID,
+		"id": resID,
 	})
 }
 

@@ -4,11 +4,10 @@ import (
 	"context"
 )
 
-
 type CityOutput struct {
-	ID   int
-	Name string
-	State  string
+	ID    int
+	Name  string
+	State string
 }
 
 type ListCitiesUseCase interface {

@@ -23,7 +23,7 @@ func NewUpdateSeatUseCase(seatRepo output.ShipConfigRepository) *UpdateSeatUseCa
 }
 
 // Execute implements input.UpdateShipUseCase
-func (uc *UpdateSeatUseCase) Execute(ctx context.Context, inputDTO *input.UpdateSeatInput, id uuid.UUID) error{
+func (uc *UpdateSeatUseCase) Execute(ctx context.Context, inputDTO *input.UpdateSeatInput, id uuid.UUID) error {
 	findSeat, err := uc.seatRepo.GetSeat(ctx, id)
 	if err != nil {
 		return fmt.Errorf("failed to find seat: %w", err)

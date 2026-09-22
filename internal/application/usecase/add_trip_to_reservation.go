@@ -15,7 +15,7 @@ import (
 
 type addTripsToReservationUseCase struct {
 	reservationRepo output.ReservationRepository
-	validateTripsUC input.ValidatedTripsUseCase 
+	validateTripsUC input.ValidatedTripsUseCase
 }
 
 func NewAddTripsToReservationUseCase(reservationRepo output.ReservationRepository, validateUC input.ValidatedTripsUseCase) *addTripsToReservationUseCase {
@@ -31,7 +31,7 @@ func (uc *addTripsToReservationUseCase) Execute(
 ) error {
 
 	for _, trip := range triToReservation.SelectedTrips {
-		
+
 		departureStr := trip.DepartureAt.Format(time.RFC3339)
 		arrivalStr := trip.ArrivalAt.Format(time.RFC3339)
 
@@ -66,13 +66,11 @@ func (uc *addTripsToReservationUseCase) Execute(
 			TripInstanceID: tripID,
 			OccupiedUnits:  trip.OccupiedUnits,
 		}
-		
 
-		if err := uc.reservationRepo.CreateTripReservation(ctx, trips, tripToReservation); 
-		err != nil {
+		if err := uc.reservationRepo.CreateTripReservation(ctx, trips, tripToReservation); err != nil {
 			return err
 		}
-		
+
 		logger.Info("Trip instance created successfully", zap.String("trip_instance_id", tripID.String()))
 	}
 	return nil

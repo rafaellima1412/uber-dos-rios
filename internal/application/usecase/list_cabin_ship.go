@@ -44,6 +44,6 @@ package usecase
 // 	// 	Description:     cabin.Description,
 // 	// 	CreatedAt:       cabin.CreatedAt,
 // 	// 	UpdatedAt:       cabin.UpdatedAt,
-// 	// }, 
+// 	// },
 
 // }

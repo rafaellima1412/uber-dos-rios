@@ -7,7 +7,7 @@ import (
 	"github.com/google/uuid"
 )
 
-type	GetSeatOutput struct {
+type GetSeatOutput struct {
 	ID                uuid.UUID
 	IsActive          bool
 	LeftColumnsCount  int
@@ -18,4 +18,4 @@ type	GetSeatOutput struct {
 
 type GetSeatUseCase interface {
 	Execute(ctx context.Context, id uuid.UUID) (*GetSeatOutput, error)
-}	
+}

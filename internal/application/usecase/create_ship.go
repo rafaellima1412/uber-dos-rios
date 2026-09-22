@@ -35,7 +35,6 @@ func (uc *CreateShipUseCase) Execute(ctx context.Context, inputDTO *input.Create
 	// 	return fmt.Errorf(common.ErrParseShipID, err)
 	// }
 
-
 	id, err := uuid.NewV7()
 	if err != nil {
 		logger.Error("Error generating UUID", zap.Error(err))

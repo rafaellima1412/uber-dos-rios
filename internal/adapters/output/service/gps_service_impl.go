@@ -31,13 +31,13 @@ func (s *GPSService) ProcessGPSData(
 	}
 
 	gps := &domain.GPS{
-		ID:           uuid.New(),
-		ShipName:     data.ShipName,
-		Latitude:     data.Latitude,
-		Longitude:    data.Longitude,
-		Speed:        data.Speed,
-		Course:       data.Course,
-		ReceivedAt:   time.Now().UTC(),
+		ID:         uuid.New(),
+		ShipName:   data.ShipName,
+		Latitude:   data.Latitude,
+		Longitude:  data.Longitude,
+		Speed:      data.Speed,
+		Course:     data.Course,
+		ReceivedAt: time.Now().UTC(),
 	}
 
 	return s.repo.CreateGPS(ctx, gps)

@@ -42,7 +42,7 @@ internal/
 └── logger/             # logger estruturado (zap)
 
 migrations/             # migrations SQL (golang-migrate), organizações → usuários → embarcações →
-                         #   rotas → terminais → horários → viagens → reservas → bagagens
+                        # rotas → terminais → horários → viagens → reservas → bagagens
 docs/                   # Swagger (swaggo) gerado a partir das anotações do código
 configs/                # config.yaml / config.local.yaml / config.docker.yaml
 ```

@@ -5,17 +5,18 @@ import (
 
 	"github.com/google/uuid"
 )
+
 type CabinLayout struct {
-	Andar         int    
-	Lado          string 
-	Local         string 
-	Identificador string 
+	Andar         int
+	Lado          string
+	Local         string
+	Identificador string
 }
 type Cabin struct {
-	Name        string  
-	BedType     string  
-	Capacity    int     
-	Description *string 
+	Name        string
+	BedType     string
+	Capacity    int
+	Description *string
 }
 
 type CreateCabinInput struct {

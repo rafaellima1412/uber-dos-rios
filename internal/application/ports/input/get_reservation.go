@@ -1,4 +1,4 @@
-// GetReservationUseCase defines 
+// GetReservationUseCase defines
 package input
 
 import "context"
@@ -15,6 +15,3 @@ type GetReservationOutput struct {
 type GetReservationUseCase interface {
 	Execute(ctx context.Context, id string) (*GetReservationOutput, error)
 }
-
-
-

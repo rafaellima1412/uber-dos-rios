@@ -10,9 +10,11 @@ import (
 	"github.com/rafaellima1412/uber-dos-rios/internal/logger"
 	"go.uber.org/zap"
 )
+
 type DeleteTripConfigUseCase struct {
 	tripConfigRepo output.TripConfigRepository
 }
+
 var _ input.DeleteTripConfigUseCase = (*DeleteTripConfigUseCase)(nil)
 
 // NewDeleteTripUseCase creates a new instance of DeleteTripUseCase.

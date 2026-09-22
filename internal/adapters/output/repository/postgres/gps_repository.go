@@ -16,6 +16,7 @@ import (
 type gpsRepositoryImpl struct {
 	db *pgxpool.Pool
 }
+
 var _ output.GPSRepository = (*gpsRepositoryImpl)(nil)
 
 // NewGPSRepositoryImpl creates a new instance of gpsRepositoryImpl.
@@ -90,7 +91,6 @@ func (r *gpsRepositoryImpl) GetGPS(ctx context.Context, id uuid.UUID) (*domain.G
 		&gps.Speed,
 		&gps.Course,
 		&gps.ReceivedAt,
-
 	)
 	if err != nil {
 		if err == pgx.ErrNoRows {

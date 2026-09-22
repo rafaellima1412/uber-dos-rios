@@ -100,4 +100,3 @@ func (o *organizationServiceImpl) GetOrganization(ctx context.Context, id string
 
 	return &org, nil
 }
-

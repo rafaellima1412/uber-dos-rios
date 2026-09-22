@@ -45,13 +45,13 @@ func (l *listScheduleUseCase) Execute(ctx context.Context, inputList input.ListS
 		}
 
 		scheduleSummaries[i] = input.ScheduleSummary{
-			ID:         schedule.ID.String(),
-			RouteID:    route.ID.String(),
-			TerminalID: terminal.ID.String(),
+			ID:          schedule.ID.String(),
+			RouteID:     route.ID.String(),
+			TerminalID:  terminal.ID.String(),
 			TenimalName: terminal.Name,
-			RouteName: route.Name,
-			Value:      schedule.Value,
-			Active:     schedule.Active,
+			RouteName:   route.Name,
+			Value:       schedule.Value,
+			Active:      schedule.Active,
 		}
 	}
 

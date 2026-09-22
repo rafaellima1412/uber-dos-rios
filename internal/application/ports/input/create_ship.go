@@ -6,8 +6,6 @@ import (
 	"github.com/google/uuid"
 )
 
-
-
 type CreateShipInput struct {
 	Name              string
 	TypeShip          string

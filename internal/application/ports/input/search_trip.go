@@ -6,6 +6,7 @@ import (
 
 	"github.com/google/uuid"
 )
+
 type SearchTripInput struct {
 	Page    int
 	PerPage int

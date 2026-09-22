@@ -33,7 +33,7 @@ func (uc *searchTerminalUseCase) Execute(ctx context.Context, query string, inpu
 		terminalSummaries = append(terminalSummaries, input.SearchTerminalSummary{
 			TerminalID: terminal.ID.String(),
 			CityID:     terminal.CityID,
-			CityName: terminal.CityName,
+			CityName:   terminal.CityName,
 			UF:         terminal.UF,
 			Name:       terminal.Name,
 			Latitude:   terminal.Latitude,

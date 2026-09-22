@@ -27,9 +27,9 @@ func (uc *LoadGraphTripUseCase) Execute(ctx context.Context, DateOrigin string, 
 	}
 	formatted_start := start.Format("2006-01-02")
 
-	end,  err := time.Parse(time.RFC3339,  DateDest)
+	end, err := time.Parse(time.RFC3339, DateDest)
 	if err != nil {
-		return nil,fmt.Errorf("invalid date_dest format, expected YYYY-MM-DD")
+		return nil, fmt.Errorf("invalid date_dest format, expected YYYY-MM-DD")
 	}
 	formatted_end := end.Format("2006-01-02")
 

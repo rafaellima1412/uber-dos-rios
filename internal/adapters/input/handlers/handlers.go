@@ -12,5 +12,5 @@ type Handlers struct {
 	TripHandler        *TripHandler
 	ReservationHandler *ReservationHandler
 	PhotosHandler      *PhotosHandler
-	GpsHandler         *GPSHandler   
+	GpsHandler         *GPSHandler
 }

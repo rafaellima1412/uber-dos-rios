@@ -14,7 +14,7 @@ type SearchTerminalInput struct {
 type SearchTerminalSummary struct {
 	TerminalID string
 	CityID     int
-	CityName	 string
+	CityName   string
 	UF         string
 	Name       string
 	Latitude   float64

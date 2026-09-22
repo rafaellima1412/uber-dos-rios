@@ -40,7 +40,7 @@ func (uc *updateShipUseCase) Execute(ctx context.Context, inputDTO *input.Update
 	// 		return fmt.Errorf("invalid configuration_id format: %w", err)
 	// 	}
 	// 	configID = &[]uuid.UUID{parsedUUID}
-		
+
 	// }
 
 	shipDomain := &domain.Ship{
@@ -55,8 +55,8 @@ func (uc *updateShipUseCase) Execute(ctx context.Context, inputDTO *input.Update
 		WeightCapacity:    inputDTO.WeightCapacity,
 		UpdatedAt:         func() *time.Time { t := time.Now(); return &t }(),
 		//ConfigurationID:   configID,
-		OrganizationID:    findShip.OrganizationID,
-		ImageUrl:          findShip.ImageUrl,
+		OrganizationID: findShip.OrganizationID,
+		ImageUrl:       findShip.ImageUrl,
 	}
 
 	err = uc.shipRepo.UpdateShip(ctx, shipDomain)

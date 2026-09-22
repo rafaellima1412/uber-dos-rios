@@ -97,5 +97,4 @@ const (
 	ErrTripTooLong            = "trip too long"
 	ErrTimezoneMismatch       = "timezone mismatch"
 	ErrTripTooShortSameDay    = "trip interval too short for same day"
-
 )

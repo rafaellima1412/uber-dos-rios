@@ -7,5 +7,5 @@ import (
 )
 
 type DeleteShipUseCase interface {
-	Execute(ctx context.Context, id  uuid.UUID) error
+	Execute(ctx context.Context, id uuid.UUID) error
 }

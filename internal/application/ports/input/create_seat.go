@@ -24,5 +24,4 @@ type CreateSeatOutput struct {
 
 type CreateSeatUseCase interface {
 	Execute(ctx context.Context, input *CreateSeatInput) (*CreateSeatOutput, error)
-
 }

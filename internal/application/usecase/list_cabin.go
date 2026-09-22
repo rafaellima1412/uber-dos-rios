@@ -17,7 +17,7 @@ func NewListCabinUseCase(cabinRepo output.ShipConfigRepository) input.ListShipCa
 	}
 }
 
-func (uc *listShipCabinUseCase) Execute(ctx context.Context,  inputCabin input.ListCabinInput) (input.ListCabinOutput, error) {
+func (uc *listShipCabinUseCase) Execute(ctx context.Context, inputCabin input.ListCabinInput) (input.ListCabinOutput, error) {
 
 	limit := inputCabin.PerPage
 	offset := (inputCabin.Page - 1) * inputCabin.PerPage
@@ -28,7 +28,7 @@ func (uc *listShipCabinUseCase) Execute(ctx context.Context,  inputCabin input.L
 	}
 	outputCabins := make([]input.CabinOutput, 0, len(cabins))
 	for _, sc := range cabins {
-		outputCabins  = append(outputCabins, input.CabinOutput{
+		outputCabins = append(outputCabins, input.CabinOutput{
 			ID:          sc.ID,
 			Name:        sc.Name,
 			BedType:     sc.BedType,

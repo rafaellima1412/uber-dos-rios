@@ -33,7 +33,7 @@ func (uc *listTerminalUseCase) Execute(ctx context.Context, inputTerminal input.
 		terminalSummaries = append(terminalSummaries, input.TerminalSummary{
 			TerminalID: terminal.ID.String(),
 			CityID:     terminal.CityID,
-			CityName: terminal.CityName,
+			CityName:   terminal.CityName,
 			UF:         terminal.UF,
 			Name:       terminal.Name,
 			Latitude:   terminal.Latitude,

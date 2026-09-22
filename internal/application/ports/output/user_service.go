@@ -6,8 +6,7 @@ import (
 	"github.com/google/uuid"
 )
 
-
-type UsersDTO struct{
+type UsersDTO struct {
 	FullName       string     `json:"full_name" validate:"required"`
 	Email          string     `json:"email" validate:"required,email"`
 	CPF            string     `json:"cpf" validate:"required,len=11"`
@@ -20,4 +19,4 @@ type UsersDTO struct{
 
 type UserService interface {
 	GetUsers(ctx context.Context, id string) (*UsersDTO, error)
-}	
+}
